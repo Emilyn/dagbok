@@ -1,0 +1,107 @@
+import { Lang, Severity, HeadacheType } from './types'
+
+type SevMeta = { label: string; desc: string; color: string; bg: string; ring: string }
+type TypeMeta = { label: string; num: number }
+
+interface Translations {
+  appTitle: string
+  subtitle: (n: number) => string
+  emptyTitle: string
+  emptySub: string
+  newEntry: string
+  editEntry: string
+  save: string
+  back: string
+  dateSection: string
+  date: string
+  starts: string
+  ends: string
+  optional: string
+  severitySection: string
+  typeSection: string
+  triggersSection: string
+  triggersPlaceholder: string
+  deleteTitle: string
+  deleteDesc: string
+  cancel: string
+  confirmDelete: string
+  months: string[]
+  weekdays: string[]
+  severity: Record<Severity, SevMeta>
+  types: Record<HeadacheType, TypeMeta>
+}
+
+export const T: Record<Lang, Translations> = {
+  sv: {
+    appTitle: 'Huvudvärksdagbok',
+    subtitle: (n) => `${n} ${n === 1 ? 'post' : 'poster'}`,
+    emptyTitle: 'Inga poster ännu',
+    emptySub: 'Tryck + för att logga din första huvudvärk',
+    newEntry: 'Ny post',
+    editEntry: 'Redigera post',
+    save: 'Spara',
+    back: 'Tillbaka',
+    dateSection: 'Datum & Klockslag',
+    date: 'Datum',
+    starts: 'Börjar',
+    ends: 'Slutar',
+    optional: 'valfri',
+    severitySection: 'Huvudvärkens styrka',
+    typeSection: 'Typ av huvudvärk',
+    triggersSection: 'Utlösande faktorer',
+    triggersPlaceholder: 'T.ex. stress, mat, dryck, hormoner, väder...',
+    deleteTitle: 'Ta bort post',
+    deleteDesc: 'Denna åtgärd kan inte ångras.',
+    cancel: 'Avbryt',
+    confirmDelete: 'Ta bort',
+    months: ['januari','februari','mars','april','maj','juni','juli','augusti','september','oktober','november','december'],
+    weekdays: ['Sön','Mån','Tis','Ons','Tor','Fre','Lör'],
+    severity: {
+      latt:  { label: 'Lätt',  desc: 'Hämmar inte skola/arbete/aktiviteter',                  color: '#5cb87a', bg: 'bg-[#5cb87a]/10', ring: 'ring-[#5cb87a]' },
+      medel: { label: 'Medel', desc: 'Hämmar, men förhindrar inte skola/arbete/aktiviteter',  color: '#e8a838', bg: 'bg-[#e8a838]/10', ring: 'ring-[#e8a838]' },
+      svar:  { label: 'Svår',  desc: 'Förhindrar skola/arbete/aktiviteter',                   color: '#d95f5f', bg: 'bg-[#d95f5f]/10', ring: 'ring-[#d95f5f]' },
+    },
+    types: {
+      migran:    { label: 'Migrän',             num: 1 },
+      spannings: { label: 'Spänningshuvudvärk', num: 2 },
+      kluster:   { label: 'Klusterhuvudvärk',   num: 3 },
+      annan:     { label: 'Annan huvudvärk',     num: 4 },
+    },
+  },
+  en: {
+    appTitle: 'Headache Diary',
+    subtitle: (n) => `${n} ${n === 1 ? 'entry' : 'entries'}`,
+    emptyTitle: 'No entries yet',
+    emptySub: 'Tap + to log your first headache',
+    newEntry: 'New entry',
+    editEntry: 'Edit entry',
+    save: 'Save',
+    back: 'Back',
+    dateSection: 'Date & Time',
+    date: 'Date',
+    starts: 'Starts',
+    ends: 'Ends',
+    optional: 'optional',
+    severitySection: 'Headache severity',
+    typeSection: 'Headache type',
+    triggersSection: 'Triggers',
+    triggersPlaceholder: 'E.g. stress, food, drink, hormones, weather...',
+    deleteTitle: 'Delete entry',
+    deleteDesc: 'This action cannot be undone.',
+    cancel: 'Cancel',
+    confirmDelete: 'Delete',
+    months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+    weekdays: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+    severity: {
+      latt:  { label: 'Mild',     desc: 'Does not hinder school/work/activities',              color: '#5cb87a', bg: 'bg-[#5cb87a]/10', ring: 'ring-[#5cb87a]' },
+      medel: { label: 'Moderate', desc: 'Hinders but does not prevent school/work/activities', color: '#e8a838', bg: 'bg-[#e8a838]/10', ring: 'ring-[#e8a838]' },
+      svar:  { label: 'Severe',   desc: 'Prevents school/work/activities',                     color: '#d95f5f', bg: 'bg-[#d95f5f]/10', ring: 'ring-[#d95f5f]' },
+    },
+    types: {
+      migran:    { label: 'Migraine',         num: 1 },
+      spannings: { label: 'Tension headache', num: 2 },
+      kluster:   { label: 'Cluster headache', num: 3 },
+      annan:     { label: 'Other headache',   num: 4 },
+    },
+  },
+}

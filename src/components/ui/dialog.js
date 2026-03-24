@@ -1,0 +1,18 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import * as React from 'react';
+import * as DialogPrimitive from '@radix-ui/react-dialog';
+import { cn } from '@/lib/utils';
+const Dialog = DialogPrimitive.Root;
+const DialogTrigger = DialogPrimitive.Trigger;
+const DialogPortal = DialogPrimitive.Portal;
+const DialogClose = DialogPrimitive.Close;
+const DialogOverlay = React.forwardRef(({ className, ...props }, ref) => (_jsx(DialogPrimitive.Overlay, { ref: ref, className: cn('fixed inset-0 z-50 bg-ink-900/80 backdrop-blur-sm data-[state=open]:animate-fade-in', className), ...props })));
+DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
+const DialogContent = React.forwardRef(({ className, children, ...props }, ref) => (_jsxs(DialogPortal, { children: [_jsx(DialogOverlay, {}), _jsx(DialogPrimitive.Content, { ref: ref, className: cn('fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 -translate-y-1/2', 'bg-ink-800 border border-ink-700 rounded-2xl p-6 shadow-2xl', 'data-[state=open]:animate-fade-up', className), ...props, children: children })] })));
+DialogContent.displayName = DialogPrimitive.Content.displayName;
+const DialogHeader = ({ className, ...props }) => (_jsx("div", { className: cn('flex flex-col gap-1.5 mb-5', className), ...props }));
+const DialogTitle = React.forwardRef(({ className, ...props }, ref) => (_jsx(DialogPrimitive.Title, { ref: ref, className: cn('font-serif text-xl font-light text-ink-100', className), ...props })));
+DialogTitle.displayName = DialogPrimitive.Title.displayName;
+const DialogDescription = React.forwardRef(({ className, ...props }, ref) => (_jsx(DialogPrimitive.Description, { ref: ref, className: cn('text-sm text-ink-400', className), ...props })));
+DialogDescription.displayName = DialogPrimitive.Description.displayName;
+export { Dialog, DialogTrigger, DialogPortal, DialogOverlay, DialogClose, DialogContent, DialogHeader, DialogTitle, DialogDescription };
