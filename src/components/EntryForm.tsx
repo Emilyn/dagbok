@@ -25,8 +25,8 @@ function FieldRow({ label, children }: { label: React.ReactNode; children: React
 function SectionCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="mb-5">
-      <p className="text-[10px] font-sans font-bold tracking-[0.18em] uppercase text-ink-600 px-1 mb-2">{title}</p>
-      <div className="bg-ink-800 rounded-2xl border border-ink-700/50 overflow-hidden divide-y divide-ink-700/50">
+      <p className="text-[10px] font-sans font-bold tracking-[0.18em] uppercase text-ink-500 px-1 mb-2">{title}</p>
+      <div className="bg-white rounded-2xl border border-ink-200 overflow-hidden divide-y divide-ink-200 shadow-sm">
         {children}
       </div>
     </div>
@@ -50,17 +50,17 @@ export function EntryForm({ existing, lang, onSave, onBack }: Props) {
   }
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full bg-ink-900">
       {/* Header */}
-      <header className="flex items-center justify-between px-4 pt-[calc(env(safe-area-inset-top,0px)+16px)] pb-3.5 border-b border-ink-800 bg-ink-900/95 backdrop-blur-sm shrink-0">
+      <header className="flex items-center justify-between px-4 pt-[calc(env(safe-area-inset-top,0px)+16px)] pb-3.5 border-b border-ink-200 bg-ink-900/95 backdrop-blur-sm shrink-0">
         <button
           onClick={onBack}
-          className="flex items-center gap-1.5 text-ink-400 hover:text-ink-100 transition-colors p-1 -ml-1"
+          className="flex items-center gap-1.5 text-ink-400 hover:text-ink-DEFAULT transition-colors p-1 -ml-1"
         >
           <ArrowLeft size={18} />
           <span className="text-sm font-sans">{t.back}</span>
         </button>
-        <h2 className="font-serif text-lg font-light text-ink-100">
+        <h2 className="font-serif text-lg font-light text-ink-DEFAULT">
           {existing ? t.editEntry : t.newEntry}
         </h2>
         <Button size="sm" onClick={handleSave} className="gap-1.5">
@@ -78,7 +78,7 @@ export function EntryForm({ existing, lang, onSave, onBack }: Props) {
               type="date"
               value={date}
               onChange={e => setDate(e.target.value)}
-              className="bg-transparent text-sm font-sans text-ink-100 text-right outline-none"
+              className="bg-transparent text-sm font-sans text-ink-DEFAULT text-right outline-none"
             />
           </FieldRow>
           <FieldRow label={t.starts}>
@@ -86,7 +86,7 @@ export function EntryForm({ existing, lang, onSave, onBack }: Props) {
               type="time"
               value={startTime}
               onChange={e => setStartTime(e.target.value)}
-              className="bg-transparent text-sm font-sans font-medium text-ink-100 text-right outline-none tabular-nums"
+              className="bg-transparent text-sm font-sans font-medium text-ink-DEFAULT text-right outline-none tabular-nums"
             />
           </FieldRow>
           <FieldRow label={<>{t.ends} <span className="text-[10px] text-ink-600 ml-1.5 tracking-wider uppercase">{t.optional}</span></>}>
@@ -94,7 +94,7 @@ export function EntryForm({ existing, lang, onSave, onBack }: Props) {
               type="time"
               value={endTime}
               onChange={e => setEndTime(e.target.value)}
-              className="bg-transparent text-sm font-sans font-medium text-ink-100 text-right outline-none tabular-nums"
+              className="bg-transparent text-sm font-sans font-medium text-ink-DEFAULT text-right outline-none tabular-nums"
             />
           </FieldRow>
         </SectionCard>
@@ -109,7 +109,7 @@ export function EntryForm({ existing, lang, onSave, onBack }: Props) {
                 key={s}
                 className={cn(
                   'w-full flex items-center gap-3.5 px-4 py-3.5 text-left transition-colors',
-                  sel ? 'bg-ink-700/40' : 'hover:bg-ink-700/20'
+                  sel ? 'bg-ink-100' : 'hover:bg-ink-50'
                 )}
                 onClick={() => setSeverity(s)}
               >
@@ -120,10 +120,10 @@ export function EntryForm({ existing, lang, onSave, onBack }: Props) {
                   {sel && <Check size={11} className="text-ink-900" strokeWidth={3} />}
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-sm font-sans font-semibold" style={{ color: sel ? m.color : '#d6d3d1' }}>
+                  <span className="text-sm font-sans font-semibold" style={{ color: sel ? m.color : '#7a6055' }}>
                     {m.label}
                   </span>
-                  <span className="text-xs font-sans text-ink-500 mt-0.5">{m.desc}</span>
+                  <span className="text-xs font-sans text-ink-400 mt-0.5">{m.desc}</span>
                 </div>
               </button>
             )
@@ -140,17 +140,17 @@ export function EntryForm({ existing, lang, onSave, onBack }: Props) {
                 key={tp}
                 className={cn(
                   'w-full flex items-center gap-3.5 px-4 py-3.5 text-left transition-colors',
-                  sel ? 'bg-ink-700/40' : 'hover:bg-ink-700/20'
+                  sel ? 'bg-ink-100' : 'hover:bg-ink-50'
                 )}
                 onClick={() => setType(tp)}
               >
                 <div className={cn(
                   'w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs font-sans font-bold transition-all',
-                  sel ? 'bg-[#c8a96e] text-ink-900' : 'bg-ink-700 text-ink-400'
+                  sel ? 'bg-accent text-white' : 'bg-ink-100 text-ink-400'
                 )}>
                   {m.num}
                 </div>
-                <span className={cn('text-sm font-sans', sel ? 'text-[#c8a96e] font-semibold' : 'text-ink-300 font-normal')}>
+                <span className={cn('text-sm font-sans', sel ? 'text-accent font-semibold' : 'text-ink-500 font-normal')}>
                   {m.label}
                 </span>
               </button>
@@ -162,7 +162,7 @@ export function EntryForm({ existing, lang, onSave, onBack }: Props) {
         <SectionCard title={t.triggersSection}>
           <div className="px-4 py-3">
             <textarea
-              className="w-full bg-transparent text-sm font-sans text-ink-100 placeholder:text-ink-600 outline-none resize-none leading-relaxed"
+              className="w-full bg-transparent text-sm font-sans text-ink-DEFAULT placeholder:text-ink-300 outline-none resize-none leading-relaxed"
               placeholder={t.triggersPlaceholder}
               value={triggers}
               onChange={e => setTriggers(e.target.value)}

@@ -5,32 +5,32 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        sans: ['"DM Sans"', 'sans-serif'],
+        serif: ['Poppins', 'sans-serif'],
+        sans: ['Poppins', 'sans-serif'],
       },
       colors: {
         ink: {
-          DEFAULT: '#1c1917',
-          50:  '#fafaf9',
-          100: '#f5f5f4',
-          200: '#e7e5e4',
-          300: '#d6d3d1',
-          400: '#a8a29e',
-          500: '#78716c',
-          600: '#57534e',
-          700: '#44403c',
-          800: '#292524',
-          900: '#1c1917',
+          DEFAULT: '#1e2a35',
+          50:  '#f4f7f9',
+          100: '#e8eef3',
+          200: '#cddae4',
+          300: '#a8bfce',
+          400: '#7a9db5',
+          500: '#567d96',
+          600: '#3f6279',
+          700: '#2d4a5e',
+          800: '#e8eef3',
+          900: '#f4f7f9',
         },
-        amber: {
-          DEFAULT: '#c8a96e',
-          light: '#e8cfa0',
-          dark:  '#a07840',
+        accent: {
+          DEFAULT: '#3b82b0',
+          light: '#6aafd4',
+          dark:  '#1e5f8a',
         },
         sev: {
-          mild:     '#5cb87a',
-          moderate: '#e8a838',
-          severe:   '#d95f5f',
+          mild:     '#2e9e6b',
+          moderate: '#e07c2a',
+          severe:   '#d43f3f',
         }
       },
       borderRadius: {

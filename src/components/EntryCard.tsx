@@ -19,18 +19,18 @@ export function EntryCard({ entry, lang, onEdit, onDelete }: Props) {
 
   return (
     <div
-      className="relative flex items-stretch bg-ink-800 rounded-2xl overflow-hidden border border-ink-700/50 active:scale-[0.99] transition-transform cursor-pointer group"
+      className="relative flex items-stretch bg-white rounded-2xl overflow-hidden border border-ink-200 active:scale-[0.99] transition-transform cursor-pointer group shadow-sm"
       onClick={onEdit}
     >
       {/* Severity stripe */}
       <div className="w-1 shrink-0" style={{ background: sev.color }} />
 
       {/* Date block */}
-      <div className="flex flex-col items-center justify-center px-4 py-3.5 border-r border-ink-700/50 min-w-[56px]">
-        <span className="text-[10px] font-sans font-semibold tracking-widest uppercase text-ink-500">
+      <div className="flex flex-col items-center justify-center px-4 py-3.5 border-r border-ink-200 min-w-[56px]">
+        <span className="text-[10px] font-sans font-semibold tracking-widest uppercase text-ink-400">
           {weekday}
         </span>
-        <span className="font-serif text-2xl text-ink-100 leading-none mt-0.5">
+        <span className="font-serif text-2xl text-ink-DEFAULT leading-none mt-0.5">
           {day}
         </span>
       </div>
@@ -47,18 +47,18 @@ export function EntryCard({ entry, lang, onEdit, onDelete }: Props) {
           >
             {sev.label}
           </span>
-          <span className="text-[11px] font-sans font-medium px-2.5 py-0.5 rounded-full bg-ink-700 text-ink-300 border border-ink-600">
+          <span className="text-[11px] font-sans font-medium px-2.5 py-0.5 rounded-full bg-ink-100 text-ink-500 border border-ink-200">
             {typ.num} · {typ.label}
           </span>
         </div>
         {entry.triggers && (
-          <p className="text-xs text-ink-500 mt-2 truncate font-sans">{entry.triggers}</p>
+          <p className="text-xs text-ink-400 mt-2 truncate font-sans">{entry.triggers}</p>
         )}
       </div>
 
       {/* Delete button */}
       <button
-        className="flex items-center justify-center px-3.5 text-ink-600 opacity-0 group-hover:opacity-100 active:opacity-100 transition-opacity hover:text-[#d95f5f]"
+        className="flex items-center justify-center px-3.5 text-ink-300 opacity-0 group-hover:opacity-100 active:opacity-100 transition-opacity hover:text-sev-severe"
         onClick={e => { e.stopPropagation(); onDelete() }}
         aria-label="Delete"
       >

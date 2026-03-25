@@ -29,6 +29,13 @@ interface Translations {
   weekdays: string[]
   severity: Record<Severity, SevMeta>
   types: Record<HeadacheType, TypeMeta>
+  menuTitle: string
+  exportSection: string
+  exportCsv: string
+  exportJson: string
+  exportCsvDesc: string
+  exportJsonDesc: string
+  language: string
 }
 
 export const T: Record<Lang, Translations> = {
@@ -54,6 +61,13 @@ export const T: Record<Lang, Translations> = {
     deleteDesc: 'Denna åtgärd kan inte ångras.',
     cancel: 'Avbryt',
     confirmDelete: 'Ta bort',
+    menuTitle: 'Meny',
+    exportSection: 'Exportera data',
+    exportCsv: 'Exportera CSV',
+    exportJson: 'Exportera JSON',
+    exportCsvDesc: 'Öppna i Excel eller Numbers',
+    exportJsonDesc: 'Fullständig säkerhetskopia',
+    language: 'Språk',
     months: ['januari','februari','mars','april','maj','juni','juli','augusti','september','oktober','november','december'],
     weekdays: ['Sön','Mån','Tis','Ons','Tor','Fre','Lör'],
     severity: {
@@ -90,6 +104,13 @@ export const T: Record<Lang, Translations> = {
     deleteDesc: 'This action cannot be undone.',
     cancel: 'Cancel',
     confirmDelete: 'Delete',
+    menuTitle: 'Menu',
+    exportSection: 'Export data',
+    exportCsv: 'Export CSV',
+    exportJson: 'Export JSON',
+    exportCsvDesc: 'Open in Excel or Numbers',
+    exportJsonDesc: 'Full backup',
+    language: 'Language',
     months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
     weekdays: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
     severity: {
