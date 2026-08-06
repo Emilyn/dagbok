@@ -37,7 +37,7 @@ export function FoodSection({ food, lang, onChange }: Props) {
         <div key={key} className="px-4 py-3">
           <p className="text-xs font-sans font-semibold text-ink-500 mb-1.5">{label}</p>
           <textarea
-            className="w-full bg-transparent text-sm font-sans text-ink-DEFAULT placeholder:text-ink-300 outline-none resize-none leading-relaxed"
+            className="w-full bg-transparent text-base font-sans text-ink-DEFAULT placeholder:text-ink-300 outline-none resize-none leading-relaxed"
             placeholder={t.mealPlaceholder}
             value={value}
             onChange={e => setValue(e.target.value)}

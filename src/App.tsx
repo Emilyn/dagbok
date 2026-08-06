@@ -73,7 +73,7 @@ export default function App() {
             type="date"
             value={pickerDate}
             onChange={e => setPickerDate(e.target.value)}
-            className="w-full bg-ink-100 rounded-xl px-4 py-3 text-sm font-sans text-ink-DEFAULT outline-none"
+            className="w-full bg-ink-100 rounded-xl px-4 py-3 text-base font-sans text-ink-DEFAULT outline-none"
           />
           <div className="flex gap-3 mt-4">
             <Button variant="outline" className="flex-1" onClick={() => setPickingDate(false)}>
