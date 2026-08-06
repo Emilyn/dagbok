@@ -8,7 +8,7 @@ export function TimeInput({ value, onChange }: { value: string; onChange: (v: st
         type="time"
         value={value}
         onChange={e => onChange(e.target.value)}
-        className="bg-transparent text-sm font-sans font-medium text-ink-DEFAULT outline-none tabular-nums cursor-pointer"
+        className="bg-transparent text-base font-sans font-medium text-ink-DEFAULT outline-none tabular-nums cursor-pointer"
       />
     </div>
   )

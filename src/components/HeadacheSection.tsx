@@ -151,7 +151,7 @@ function OccurrenceForm({ draft, setDraft, lang, onSave, onCancel }: {
       <div className="px-4 py-3">
         <p className="text-[10px] font-sans font-bold tracking-[0.14em] uppercase text-ink-500 mb-2">{t.triggersSection}</p>
         <textarea
-          className="w-full bg-white rounded-lg border border-ink-200 px-3 py-2 text-sm font-sans text-ink-DEFAULT placeholder:text-ink-300 outline-none resize-none leading-relaxed"
+          className="w-full bg-white rounded-lg border border-ink-200 px-3 py-2 text-base font-sans text-ink-DEFAULT placeholder:text-ink-300 outline-none resize-none leading-relaxed"
           placeholder={t.triggersPlaceholder}
           value={draft.triggers}
           onChange={e => setDraft({ ...draft, triggers: e.target.value })}
