@@ -1,33 +1,33 @@
 import { useState } from 'react'
-import { HeadacheEntry, Lang } from '@/types'
+import { DayEntry, Lang } from '@/types'
 import { T } from '@/i18n'
 import { Plus, Menu, X, Globe, FileText, FileJson } from 'lucide-react'
-import { EntryCard } from './EntryCard'
+import { DayCard } from './DayCard'
 import { exportCsv, exportJson } from '@/lib/exportData'
 
 interface Props {
-  entries: HeadacheEntry[]
+  days: DayEntry[]
   lang: Lang
   onAdd: () => void
-  onEdit: (e: HeadacheEntry) => void
-  onDelete: (id: string) => void
+  onOpenDay: (date: string) => void
+  onDeleteDay: (date: string) => void
   onToggleLang: () => void
 }
 
-function groupByMonth(entries: HeadacheEntry[], months: string[]) {
-  const map = new Map<string, HeadacheEntry[]>()
-  for (const e of entries) {
-    const d = new Date(e.date + 'T12:00:00')
+function groupByMonth(days: DayEntry[], months: string[]) {
+  const map = new Map<string, DayEntry[]>()
+  for (const day of days) {
+    const d = new Date(day.date + 'T12:00:00')
     const key = `${months[d.getMonth()]} ${d.getFullYear()}`
     if (!map.has(key)) map.set(key, [])
-    map.get(key)!.push(e)
+    map.get(key)!.push(day)
   }
   return Array.from(map.entries()).map(([month, items]) => ({ month, items }))
 }
 
-export function ListView({ entries, lang, onAdd, onEdit, onDelete, onToggleLang }: Props) {
+export function ListView({ days, lang, onAdd, onOpenDay, onDeleteDay, onToggleLang }: Props) {
   const t = T[lang]
-  const grouped = groupByMonth(entries, t.months)
+  const grouped = groupByMonth(days, t.months)
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
@@ -39,7 +39,7 @@ export function ListView({ entries, lang, onAdd, onEdit, onDelete, onToggleLang 
             {t.appTitle}
           </h1>
           <p className="text-xs text-ink-500 mt-0.5 font-sans tracking-widest uppercase">
-            {t.subtitle(entries.length)}
+            {t.subtitle(days.length)}
           </p>
         </div>
         <button
@@ -53,7 +53,7 @@ export function ListView({ entries, lang, onAdd, onEdit, onDelete, onToggleLang 
 
       {/* List */}
       <main className="flex-1 overflow-y-auto px-4 pb-24">
-        {entries.length === 0 ? (
+        {days.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full gap-3 text-center px-8">
             <div className="w-16 h-16 rounded-full bg-ink-100 flex items-center justify-center mb-2">
               <span className="text-2xl text-ink-400">◎</span>
@@ -68,17 +68,17 @@ export function ListView({ entries, lang, onAdd, onEdit, onDelete, onToggleLang 
                 {month}
               </div>
               <div className="flex flex-col gap-2.5">
-                {items.map((entry, i) => (
+                {items.map((day, i) => (
                   <div
-                    key={entry.id}
+                    key={day.date}
                     className="animate-fade-up"
                     style={{ animationDelay: `${i * 40}ms` }}
                   >
-                    <EntryCard
-                      entry={entry}
+                    <DayCard
+                      day={day}
                       lang={lang}
-                      onEdit={() => onEdit(entry)}
-                      onDelete={() => onDelete(entry.id)}
+                      onOpen={() => onOpenDay(day.date)}
+                      onDelete={() => onDeleteDay(day.date)}
                     />
                   </div>
                 ))}
@@ -141,8 +141,8 @@ export function ListView({ entries, lang, onAdd, onEdit, onDelete, onToggleLang 
             <p className="text-[10px] font-sans font-bold tracking-[0.18em] uppercase text-ink-400 mb-3">{t.exportSection}</p>
             <div className="flex flex-col gap-2">
               <button
-                onClick={() => { exportCsv(entries); setMenuOpen(false) }}
-                disabled={entries.length === 0}
+                onClick={() => { exportCsv(days); setMenuOpen(false) }}
+                disabled={days.length === 0}
                 className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-ink-100 hover:bg-ink-200 transition-colors text-left disabled:opacity-40 disabled:pointer-events-none"
               >
                 <FileText size={16} className="text-sev-mild shrink-0" />
@@ -152,8 +152,8 @@ export function ListView({ entries, lang, onAdd, onEdit, onDelete, onToggleLang 
                 </div>
               </button>
               <button
-                onClick={() => { exportJson(entries); setMenuOpen(false) }}
-                disabled={entries.length === 0}
+                onClick={() => { exportJson(days); setMenuOpen(false) }}
+                disabled={days.length === 0}
                 className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-ink-100 hover:bg-ink-200 transition-colors text-left disabled:opacity-40 disabled:pointer-events-none"
               >
                 <FileJson size={16} className="text-accent shrink-0" />
